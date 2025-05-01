@@ -1,0 +1,14 @@
+com\eventipass\backend\BackendApplication.class
+com\eventipass\backend\Controller\controllerxd.class
+com\eventipass\backend\Service\EventService.class
+com\eventipass\backend\Model\Event.class
+com\eventipass\backend\Service\IAttendeeService.class
+com\eventipass\backend\Repository\IEventRepository.class
+com\eventipass\backend\Dto\AttendeeDto.class
+com\eventipass\backend\Model\Attendee.class
+com\eventipass\backend\Dto\EventDto.class
+com\eventipass\backend\Repository\IAttendeeRepository.class
+com\eventipass\backend\Controller\EventController.class
+com\eventipass\backend\Controller\AttendeeController.class
+com\eventipass\backend\Service\IEventService.class
+com\eventipass\backend\Service\AttendeeService.class
