@@ -38,7 +38,7 @@ public class AttendeeController {
     public ResponseEntity<Attendee> getAttendeeById(@PathVariable UUID id){
         try {
             Attendee attendee = attendeeService.getAttendeeById(id);
-            return ResponseEntity.status(HttpStatus.OK).body(attendee);
+            return ResponseEntity.ok(attendee);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
