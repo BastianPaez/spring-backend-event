@@ -22,7 +22,7 @@ public class Event {
     private String type;
     private LocalDate date;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Attendee> attendeeList;
 
