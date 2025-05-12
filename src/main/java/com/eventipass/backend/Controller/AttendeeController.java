@@ -28,7 +28,7 @@ public class AttendeeController {
             Event event = eventService.getEventById(attendeeDto.getEventId());
             Attendee attendee = new Attendee(attendeeDto.getName(), attendeeDto.getLastName(), attendeeDto.getBirthday(), attendeeDto.getEmail(), event);
             attendeeService.createAttendee(attendee);
-            return ResponseEntity.status(HttpStatus.CREATED).body(attendee);
+            return ResponseEntity.status(HttpStatus.OK).body(attendee);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
