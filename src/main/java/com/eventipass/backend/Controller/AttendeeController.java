@@ -22,13 +22,13 @@ public class AttendeeController {
     private IEventService eventService;
 
     @PostMapping
-    public ResponseEntity<String> createAttendee(@RequestBody AttendeeDto attendeeDto){
+    public ResponseEntity<Attendee> createAttendee(@RequestBody AttendeeDto attendeeDto){
 
         try{
             Event event = eventService.getEventById(attendeeDto.getEventId());
             Attendee attendee = new Attendee(attendeeDto.getName(), attendeeDto.getLastName(), attendeeDto.getBirthday(), attendeeDto.getEmail(), event);
             attendeeService.createAttendee(attendee);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Created");
+            return ResponseEntity.status(HttpStatus.CREATED).body(attendee);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -58,13 +58,11 @@ public class AttendeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> updateAttendee( @PathVariable UUID id){
-        try {
-            attendeeService.deleteAttendeeById(id);
-            return ResponseEntity.status(HttpStatus.OK).body("Deleted");
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
-        }
+    public void updateAttendee( @PathVariable UUID id){
+
+        attendeeService.deleteAttendeeById(id);
+
+
     }
 
 

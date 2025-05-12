@@ -20,10 +20,10 @@ public class EventController {
     private IEventService eventService;
 
     @PostMapping("/event")
-    public ResponseEntity<String> createEvent(@Valid @RequestBody EventDto eventDto) {
+    public ResponseEntity<Event> createEvent(@Valid @RequestBody EventDto eventDto) {
         Event event = new Event(eventDto.getName(), eventDto.getDescription(), eventDto.getType(), eventDto.getDate());
         eventService.createEvent(event);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Successful");
+        return ResponseEntity.status(HttpStatus.OK).body(event);
     }
 
     @GetMapping("/event")
@@ -54,13 +54,8 @@ public class EventController {
      }
 
     @DeleteMapping("/event/{id}")
-    public ResponseEntity<String> deleteEvent(@PathVariable UUID id){
-        try{
-            eventService.deleteEventById(id);
-            return ResponseEntity.status(HttpStatus.OK).body("Deleted");
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("not Deleted");
-        }
+    public void deleteEvent(@PathVariable UUID id){
+        eventService.deleteEventById(id);
 
     }
 
